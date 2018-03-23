@@ -1,6 +1,6 @@
 // Available Cards for level A = Beginner and level B = Advanced
 
-const imageBeginnerList = [ //object
+ const imageBeginnerList = [ //object
 	{	card: 1,
 		img: "imgBeginner/baratheon.svg"
 	},
@@ -11,7 +11,7 @@ const imageBeginnerList = [ //object
 		img: "imgBeginner/lannister.svg"
 	},
 	{	card:4,
-		img: "imgBeginner/martell.svg"
+	img: "imgBeginner/martell.svg"
 	},
 	{	card: 5,
 		img: "imgBeginner/mormont.svg"
@@ -20,6 +20,7 @@ const imageBeginnerList = [ //object
 		img: "imgBeginner/stark.svg"
 	},
 	{	card: 7,
+
 		img: "imgBeginner/targaryen.svg"
 	},
 	{	card: 8,
@@ -217,7 +218,7 @@ function resetGameTime() {
 
 
 /*
-*	@description - Spielesteuerung
+*	@description - Game Controls
 *	
 */
 
@@ -238,8 +239,9 @@ function playAgainButton() {
 
 function matchedImages() {
 	const selectedImages = document.querySelectorAll('.selected');
-
-	if (selectedImages[0] === selectedImages[1]) {
+	alert (selectedImages[0]);
+	
+	if (selectedImages[0].src === selectedImages[1].src) {
 		return true;
 		for (let i = 0; i < 2; i++ ) {
 			selectedImages[i].className = 'image_top match';
@@ -348,7 +350,7 @@ for ( let i = 0; i < imagesTop.length; i++ ) {
 				this.className = 'image_top selected';
 
 				const selectedImages = document.querySelectorAll('.selected');
-				console.log('Bilder ' + selectedImages);
+				console.log('Images' + selectedImages);
 
 
 
