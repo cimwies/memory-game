@@ -237,6 +237,8 @@ function playAgainButton() {
 	playAgainButton.addEventListener('click', restartGame);
 }
 
+
+// TODO compare innerHTML - Sahers idea to make it easier :-)
 function matchedImages() {
 	const selectedImages = document.querySelectorAll('.selected');
 	alert (selectedImages[0]);
@@ -351,8 +353,6 @@ for ( let i = 0; i < imagesTop.length; i++ ) {
 
 				const selectedImages = document.querySelectorAll('.selected');
 				console.log('Images' + selectedImages);
-
-
 
 				if (selectedImages.length === 2) {
 					selectedImages[0] = selectedImages[1] ? matchedImages(true) : matchedImages(false);
