@@ -104,7 +104,6 @@ const imageAdvancedList = [
 
 const cardTop =  document.querySelectorAll('.card_top');
 const imagesTop = document.querySelectorAll('.image_top'); 
-const gameTime = document.querySelector('.paragraph_timer');
 
 let gameTimeInterval;
 
@@ -171,7 +170,7 @@ function removeAllImages() {
 function addImagestoHTMLAdvanced() {
 	removeAllImages();
 	removeAllImagesAdvanced()
-	//imageAdvancedList.sort(randomize);
+	imageAdvancedList.sort(randomize);
 	for (let i = 0; i < imageAdvancedList.length; i++ ) {
 		imagesTop[i].setAttribute('src', imageAdvancedList[i].img );
 	}
@@ -194,7 +193,7 @@ function removeAllImagesAdvanced() {
 */
 
 function startGameTime() {
-	//const gameTime = document.querySelector('.paragraph_timer');
+	const gameTime = document.querySelector('.paragraph_timer');
 	const timeStamp = Date.now();
 
 	clearInterval(gameTimeInterval);
@@ -340,8 +339,8 @@ function initializeEventListeners() {
 	let selectedImages = [];
 	let clickCounter = 0;
 
-// I am trying to push the 2 clickes images into an array, stop further clicking and comparing the 2 elements. 
-// If they are are idenical	
+// I am trying to push the 2 clicked images into an array, stop further clicking and compare the 2 elements. 
+// If they are are identical proceed with the matchedImages()-function on line 240 and clear the selected ImagesArray for the next round 	
 
 for ( let i = 0; i < imagesTop.length; i++ ) {
 		imagesTop[i].addEventListener('click', function (evt) {
