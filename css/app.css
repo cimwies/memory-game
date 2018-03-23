@@ -1,0 +1,322 @@
+/* Browser Reset */
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+h1,
+h2
+ {
+    margin: 0;
+}
+
+p {
+    margin: 0;
+}
+
+
+/* Basic Elements */
+
+body {
+    background: #29282d url(../img/title.jpg) no-repeat center center fixed/*#bcc9d5*/;
+    background-size: cover;
+    font: 18px/ 1.33 'Cormorant SC', serif; /*golden rule 18 * 1.618 for line height */
+    color: #fff;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    max-width: 940px;
+    margin: 0 auto;
+}
+
+header {
+    padding: 1rem 2rem 2rem;
+}
+
+h1 {
+    font-size: 3.2rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.6rem;
+    font-weight: 300;
+    text-align: center;
+}
+
+
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 100%;
+    padding: 1rem 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0;
+}
+
+.deck li {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: calc(100% / 4);
+    min-width: 80px;
+}
+
+.deck .card {
+    margin: 8px;
+}
+
+.deck .card_bottom {
+    background-image: url(../img/match.svg) no-repeat center center;
+}
+
+.deck img {
+    display: block;
+    height: auto;
+    width: 100%;
+    margin: 0 auto;
+    padding: 0;
+    border-radius: 8px;
+    background: transparent;
+}
+
+/* test Start */
+
+img.image_top {
+    opacity: 0;
+    transition: 0.5s all;
+}
+
+img.image_bottom {
+    margin-top: -100%;
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.5);
+}
+
+img:hover {
+    -webkit-transform: scale(1.02) rotateY(0);
+            transform: scale(1.02) rotateY(0);
+}
+
+img.selected {
+    -webkit-transform: scale(1.02) rotateY(360deg);
+            transform: scale(1.02) rotateY(360deg);
+}
+
+img.selected:hover,
+img.match:hover,
+img.wrong:hover {
+  cursor: default;
+}
+
+img.match {
+    -webkit-animation: correct 1s forwards;
+            animation: correct 1s forwards;
+    background-color: #5aca84;
+}
+
+img.wrong {
+    -webkit-animation: wrong 1s forwards;
+            animation: wrong 1s forwards;
+    background-color: #ff4447;
+}
+
+img.selected,
+img.match,
+img.wrong  {
+    opacity: 1;
+}
+
+
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    padding: 0 2rem;
+}
+
+.score-panel .stars {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    margin: 0 5px 0 0;
+}
+
+.fa-star {
+   color: #fbca39;
+}
+
+.score-panel .moves {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.score-panel .moves .paragraph_moves {
+    align-items: center;
+}
+
+.score-panel .timer {
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+}
+
+.score-panel .timer .paragraph_timer {
+    width: 62px;
+    align-items: center;
+}
+
+.score-panel #restart,
+.score-panel #advanced {
+    flex-grow: 1;
+    justify-content: center;
+    cursor: pointer;
+    color: #fff;
+    background: transparent;
+    font-family: 'Cormorant SC', serif;
+    font-size: 1rem;
+    border: none;
+}
+
+.score-panel #restart:active {
+    border-color: none;
+    outline: none;
+}
+
+
+
+/*
+ * Styles Winner Message
+ */
+
+.winner_message {
+  color: #29282d;
+  background-color: #fff;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  padding: 2em;
+  left: 50%;
+  top: -100%;
+  text-align: center;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  transition: 0.2s all ease-in;
+}
+
+.winner_message.active {
+  z-index: 1;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  top: 40%;
+}
+
+.winner_message .winning_stars {
+    display: flex;
+    flex-grow: 1;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.winner_message .winning_stars li {
+    list-style: none;
+    margin: 0 5px 0 0;
+}
+
+.play_again {
+    display: inline-block;
+    font-weight: 400;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    background-color: #fbca39;
+    border: 1px solid #fbca39;
+    padding: .375rem .75rem;
+    font-size: 1rem;
+    line-height: 1.5;
+    border-radius: .25rem;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.play_again:hover {
+    background-color: #E1B533;
+    border-color: #E1B533;
+}
+
+
+
+/*
+ * Styles Footer
+ */
+
+footer {
+    padding: 0 2rem 1rem;
+}
+
+footer p,
+footer a {
+    color: #676262;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+
+
+/*
+ * Media Queries
+ */
+
+@media only screen and (max-width: 800px) {
+    h1 {
+        font-size: 2.2rem;
+    }
+
+    h2 {
+        font-size: 1.2rem;
+    }
+}  
