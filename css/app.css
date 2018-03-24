@@ -99,6 +99,7 @@ h2 {
 }
 
 .deck img {
+    position: relative;
     display: block;
     height: auto;
     width: 100%;
@@ -113,11 +114,13 @@ h2 {
 img.image_top {
     opacity: 0;
     transition: 0.5s all;
+    z-index: 10;
 }
 
 img.image_bottom {
     margin-top: -100%;
     box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.5);
+    z-index: 1;
 }
 
 img:hover {
@@ -132,26 +135,29 @@ img.selected {
 
 img.selected:hover,
 img.match:hover,
-img.wrong:hover {
+img.incorrect:hover {
   cursor: default;
 }
 
 img.match {
-    -webkit-animation: correct 1s forwards;
-            animation: correct 1s forwards;
+    /*-webkit-animation: match 1s forwards;
+            animation: match 1s forwards;
+            */
     background-color: #5aca84;
 }
 
-img.wrong {
-    -webkit-animation: wrong 1s forwards;
-            animation: wrong 1s forwards;
+img.incorrect {
+    /*-webkit-animation: incorrect 1s forwards;
+            animation: incorrect 1s forwards;
+            */
     background-color: #ff4447;
 }
 
 img.selected,
 img.match,
-img.wrong  {
+img.incorrect  {
     opacity: 1;
+    z-index: 10;
 }
 
 
@@ -247,10 +253,15 @@ img.wrong  {
 }
 
 .winner_message.active {
-  z-index: 1;
+  z-index: 100;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
   top: 40%;
+}
+
+.winner-message .container {
+    position: relative;
+    z-index: 100;
 }
 
 .winner_message .winning_stars {

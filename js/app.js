@@ -238,29 +238,31 @@ function playAgainButton() {
 }
 
 
-// TODO compare innerHTML - Sahers idea to make it easier :-)
-function matchedImages() {
+// Thank you #hard_coder team with the tip to use bool :-)
+function matchedImages(bool) {
 	const selectedImages = document.querySelectorAll('.selected');
-	alert (selectedImages[0]);
-	
-	if (selectedImages[0].src === selectedImages[1].src) {
-		return true;
-		for (let i = 0; i < 2; i++ ) {
-			selectedImages[i].className = 'image_top match';
-		}
-	} else {
-		return false;
-		for (let i = 0; i < 2; i++ ) {
-			selectedImages[i].className = 'image_top incorrect';
-			setTimeout(function(){ 
-				selectedImages[i].className = 'image_top';
-			}, 1000 );
-		}
 
+	let tempClass = 'match';
+	if (!bool) {
+		tempClass = 'incorrect';
 	}
+
+	selectedImages.forEach(function (element) {
+  		return element.className = tempClass;
+	});
+
+	flipIncorrectImages();
 }
 
 
+function flipIncorrectImages() {
+	const selectedIncorrect = document.querySelectorAll('.incorrect');
+	setTimeout(function () {
+  		return selectedIncorrect.forEach(function (element) {
+    		return element.className = 'image_top';
+ 		});
+	}, 1000);
+}
 
 /*
 *	@description - Scoring
@@ -311,24 +313,24 @@ function updateScore(clickCounter) {
 }
 
 function checkGameOver() {
-	const allImages = document.querySelectorAll('.image_top').length;
+	const allImages = document.querySelectorAll('.card_top img').length;
 	const matchImages = document.querySelectorAll('.match').length || 0;
-	if (matchImages === allImages) {
+	if ( matchImages === allImages ) {
 		displayWinningMessage();
 	}
-}
-
-function winningMessage() {
-	const finalClickCount = document.querySelector('.final_moves');
-	const finalGameTime = document.querySelector('.final_time');
-	finalClickCount.innerText = "Total moves: " + clickCount;
-	finalGameTime.innerText = "Time " + gameTimeInterval;
 }
 
 function displayWinningMessage() {
   	document.querySelector('.winner_message').classList.add('active');
 	stopGameTime();
 	winningMessage();
+}
+
+function winningMessage() {
+	const finalClickCount = document.querySelector('.final_moves');
+	const finalGameTime = document.querySelector('.final_time');
+	finalClickCount.innerText = "Total moves: " ; // TODO implement clickCounter;
+	finalGameTime.innerText = "Time " + document.querySelector('.paragraph_timer'); // TODO set time correct
 }
 
 
@@ -339,7 +341,7 @@ function displayWinningMessage() {
 */
 
 function initializeEventListeners() {
-	//const imagesTop =  document.querySelectorAll('.image_top');
+	const imagesTop =  document.querySelectorAll('.image_top');
 	let selectedImages = [];
 	let clickCounter = 0;
 
@@ -348,26 +350,22 @@ function initializeEventListeners() {
 
 for ( let i = 0; i < imagesTop.length; i++ ) {
 		imagesTop[i].addEventListener('click', function (evt) {
-			if (this.className === 'image_top') {
-				this.className = 'image_top selected';
+			if (imagesTop[i].className === 'image_top') {
+				imagesTop[i].className = 'selected';
+				selectedImages.push(imagesTop[i]);
 
-				const selectedImages = document.querySelectorAll('.selected');
-				console.log('Images' + selectedImages);
-
+				
 				if (selectedImages.length === 2) {
-					selectedImages[0] = selectedImages[1] ? matchedImages(true) : matchedImages(false);
+					selectedImages[0].src === selectedImages[1].src  ? matchedImages(true) : matchedImages(false);
 					selectedImages = [];
+					clickCounter += 1;
+					updateScore(clickCounter);
+					document.querySelector('.paragraph_moves').innerText = 'Moves: ' + clickCounter;
 				}
-
+				checkGameOver();
 			}
-		
-		clickCounter += 1;
-		updateScore(clickCounter);
-		document.querySelector('.paragraph_moves').innerText = 'Moves: ' + clickCounter;
-
 		});
 	}
-
 }
 
 startGameAdvanced();
