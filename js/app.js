@@ -1,6 +1,6 @@
 // Available Cards for level A = Beginner and level B = Advanced
 
- const imageBeginnerList = [ //object
+ const imageBeginnerList = [
 	{	card: 1,
 		img: "imgBeginner/baratheon.svg"
 	},
@@ -105,13 +105,12 @@ const imageAdvancedList = [
 
 const cardTop =  document.querySelectorAll('.card_top');
 const imagesTop = document.querySelectorAll('.image_top'); 
-
 let gameTimeInterval;
 
 
 // Basic Functions
 function startGame() {
-	resetScore();
+	//resetScore(); should not be required
 	addImagestoHTML();
 	startGameTime();
 	initializeRestartButton();
@@ -119,26 +118,18 @@ function startGame() {
 
 function restartGame() {
 	resetScore();
+	//alert(clickCounter); alwasy shos "0"
 	addImagestoHTML();
-	resetScore();
 	resetGameTime();
-
-	//initializeRestartButton();
+	initializeRestartButton();
 	
-}
-
-function startGameAdvanced() {
-	addImagestoHTMLAdvanced();
-	resetScore();
-	startGameTime();
-	initializeAdvancedButton();
 }
 
 function restartGameAdvanced() {
 	resetScore();
 	addImagestoHTMLAdvanced();
-	startGameTime();
-	initializeRestartButton();
+	resetGameTime();
+	initializeAdvancedButton();
 }
 
 
@@ -161,7 +152,6 @@ function addImagestoHTML() {
 	for (let i = 0; i < imageBeginnerList.length; i++ ) {
 		imagesTop[i].setAttribute('src', imageBeginnerList[i].img );
 	}
-
 	initializeEventListeners();		
 }	
 
@@ -173,7 +163,7 @@ function removeAllImages() {
 	}
 }
 
-// ADVANCED Version - Adding the Cards to the HTML page
+// Advanced Version - Adding the Cards to the HTML page
 function addImagestoHTMLAdvanced() {
 	removeAllImages();
 	removeAllImagesAdvanced()
@@ -181,10 +171,10 @@ function addImagestoHTMLAdvanced() {
 	for (let i = 0; i < imageAdvancedList.length; i++ ) {
 		imagesTop[i].setAttribute('src', imageAdvancedList[i].img );
 	}
-
 	initializeEventListeners();		
-}	
+}
 
+// Advanced Version - Remove the images from the HTML page
 function removeAllImagesAdvanced() {
 	for (let i = 0; i < imageAdvancedList.length; i++ ) {
 		imagesTop[i].setAttribute('src', '');
@@ -195,7 +185,8 @@ function removeAllImagesAdvanced() {
 
 
 /*
-*	@description - Setting timer functions
+*	@description - Setting timer functions using Date.now()
+*	@description -  Converting the milliseconds in an interval printing seconds and minutes
 *	
 */
 
@@ -231,7 +222,6 @@ function resetGameTime() {
 function initializeRestartButton() {
 	const restartButton = document.querySelector('#restart');
 	restartButton.addEventListener('click', restartGame);
-	ALERT('HALLO');
 }
 
 function initializeAdvancedButton() {
@@ -245,7 +235,7 @@ function playAgainButton() {
 }
 
 
-// Thank you #hard_coder team with the tip to use bool :-)
+// Thank you #hard_coder team with the tip to use "bool" :-)
 function matchedImages(bool) {
 	const selectedImages = document.querySelectorAll('.selected');
 
@@ -261,7 +251,7 @@ function matchedImages(bool) {
 	flipIncorrectImages();
 }
 
-
+// 1 sec in order to give the user a chance to memorize the cards
 function flipIncorrectImages() {
 	const selectedIncorrect = document.querySelectorAll('.incorrect');
 	setTimeout(function () {
@@ -271,12 +261,16 @@ function flipIncorrectImages() {
 	}, 1000);
 }
 
+
+
 /*
 *	@description - Scoring
 *	
 */
 
 function resetScore() {
+	removeAllImages();
+	removeAllImagesAdvanced()
 	const stars = document.querySelectorAll('.fa-star');
 	for ( let i = 0; i < 3; i++) {
 		stars[i].style.color = '#fbca39';
@@ -287,12 +281,10 @@ function resetScore() {
 		}	
 	document.querySelector('.winner_message').classList.remove('active');
 	document.querySelector('.paragraph_moves').innerText = 'Moves: 0';
-	document.querySelector('.final_moves').innerText = 'Moves: 0';
 	clickCounter = 0;
-
-
 }
 
+// nothing fancy just simple color settings
 function updateScore(clickCounter) {
 	const stars = document.querySelectorAll('.stars .fa-star');
 	const winningStars = document.querySelectorAll('.winning_stars .fa-star');
@@ -323,26 +315,26 @@ function updateScore(clickCounter) {
    	}
 }
 
+// if all cards are matched cards the game is over
 function checkGameOver() {
 	const allImages = document.querySelectorAll('.card_top img').length;
-	const matchImages = document.querySelectorAll('.match').length || 0;
+	const matchImages = document.querySelectorAll('.match').length; //|| 0;
 	if ( matchImages === allImages ) {
 		displayWinningMessage();
 	}
 }
 
+// activate the winning message
 function displayWinningMessage() {
   	document.querySelector('.winner_message').classList.add('active');
 	stopGameTime();
 	winningMessage();
 }
 
+// show the scores on the winning message and activate the replay button
 function winningMessage() {
-	//const finalClickCount = document.querySelector('.final_moves');
 	const finalGameTime = document.querySelector('.final_time');
-	//finalClickCount.innerText = 'Moves: ' + clickCounter; // couldn't get this working
 	finalGameTime.innerText = "Time " + document.querySelector('.paragraph_timer').innerText; 
-
 	playAgainButton();
 }
 
@@ -356,7 +348,6 @@ function winningMessage() {
 function initializeEventListeners() {
 	const imagesTop =  document.querySelectorAll('.image_top');
 	let selectedImages = [];
-	let clickCounter = 0;
 
 	for ( let i = 0; i < imagesTop.length; i++ ) {
 		imagesTop[i].addEventListener('click', function (evt) {
@@ -377,9 +368,7 @@ function initializeEventListeners() {
 			}
 		});
 	}
-
-	initializeRestartButton();
 }
 
-startGameAdvanced();
+restartGameAdvanced();
 startGame();

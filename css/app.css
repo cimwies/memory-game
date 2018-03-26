@@ -109,7 +109,6 @@ h2 {
     background: transparent;
 }
 
-/* test Start */
 
 img.image_top {
     opacity: 0;
@@ -136,7 +135,7 @@ img.selected {
 img.selected:hover,
 img.match:hover,
 img.incorrect:hover {
-  cursor: default;
+    cursor: default;
 }
 
 img.match {
@@ -188,7 +187,7 @@ img.incorrect  {
 }
 
 .fa-star {
-   color: #fbca39;
+    color: #fbca39;
 }
 
 .score-panel .moves {
@@ -222,6 +221,7 @@ img.incorrect  {
     font-family: 'Cormorant SC', serif;
     font-size: 1rem;
     border: none;
+    outline: none;
 }
 
 .score-panel #restart:active {
