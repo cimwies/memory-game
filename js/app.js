@@ -111,28 +111,34 @@ let gameTimeInterval;
 
 // Basic Functions
 function startGame() {
-	addImagestoHTML();
 	resetScore();
-	initializeRestartButton();
+	addImagestoHTML();
 	startGameTime();
+	initializeRestartButton();
 }
 
 function restartGame() {
+	resetScore();
 	addImagestoHTML();
 	resetScore();
 	resetGameTime();
+
+	//initializeRestartButton();
+	
 }
 
 function startGameAdvanced() {
 	addImagestoHTMLAdvanced();
-	initializeAdvancedButton();
+	resetScore();
 	startGameTime();
+	initializeAdvancedButton();
 }
 
 function restartGameAdvanced() {
-	addImagestoHTMLAdvanced();
 	resetScore();
-	resetGameTime();
+	addImagestoHTMLAdvanced();
+	startGameTime();
+	initializeRestartButton();
 }
 
 
@@ -189,7 +195,7 @@ function removeAllImagesAdvanced() {
 
 
 /*
-*	@description - Setting the timer functions
+*	@description - Setting timer functions
 *	
 */
 
@@ -225,6 +231,7 @@ function resetGameTime() {
 function initializeRestartButton() {
 	const restartButton = document.querySelector('#restart');
 	restartButton.addEventListener('click', restartGame);
+	ALERT('HALLO');
 }
 
 function initializeAdvancedButton() {
@@ -272,41 +279,45 @@ function flipIncorrectImages() {
 function resetScore() {
 	const stars = document.querySelectorAll('.fa-star');
 	for ( let i = 0; i < 3; i++) {
-		stars[i].style.color = '#fff';
+		stars[i].style.color = '#fbca39';
 		}
 	const winningStars = document.querySelectorAll('.winning_stars .fa-star');
 	for ( let i = 0; i < 3; i++) {
-		winningStars[i].style.color = '#fff';
+		winningStars[i].style.color = '#fbca39';
 		}	
-	document.querySelector('.winner_message').classList.remove('active');	
+	document.querySelector('.winner_message').classList.remove('active');
 	document.querySelector('.paragraph_moves').innerText = 'Moves: 0';
+	document.querySelector('.final_moves').innerText = 'Moves: 0';
+	clickCounter = 0;
+
+
 }
 
 function updateScore(clickCounter) {
 	const stars = document.querySelectorAll('.stars .fa-star');
 	const winningStars = document.querySelectorAll('.winning_stars .fa-star');
 	switch(clickCounter) {
-    	case 2:
+    	case 18:
 	       	stars[0].style.color = '#fbca39';
-	      	stars[1].style.color = '#fbca39';
-	      	stars[2].style.color = '#fbca39';
-	      	winningStars[0].style.color = '#fbca39';
-	      	winningStars[1].style.color = '#fbca39';
-	      	winningStars[2].style.color = '#fbca39';
-    	break;
-      	case 4:
-        	stars[0].style.color = '#fbca39';
 	      	stars[1].style.color = '#fbca39';
 	      	stars[2].style.color = '#fff';
 	      	winningStars[0].style.color = '#fbca39';
 	      	winningStars[1].style.color = '#fbca39';
-	      	winningStars[2].style.color = '#fff';
-       	break;
-      	case 8:
-	        stars[0].style.color = '#fbca39';
+	      	winningStars[2].style.color = '#ffff';
+    	break;
+      	case 24:
+        	stars[0].style.color = '#fbca39';
 	      	stars[1].style.color = '#fff';
 	      	stars[2].style.color = '#fff';
 	      	winningStars[0].style.color = '#fbca39';
+	      	winningStars[1].style.color = '#fff';
+	      	winningStars[2].style.color = '#fff';
+       	break;
+      	case 36:
+	        stars[0].style.color = '#fff';
+	      	stars[1].style.color = '#fff';
+	      	stars[2].style.color = '#fff';
+	      	winningStars[0].style.color = '#fff';
 	      	winningStars[1].style.color = '#fff';
 	      	winningStars[2].style.color = '#fff';
    	}
@@ -327,10 +338,12 @@ function displayWinningMessage() {
 }
 
 function winningMessage() {
-	const finalClickCount = document.querySelector('.final_moves');
+	//const finalClickCount = document.querySelector('.final_moves');
 	const finalGameTime = document.querySelector('.final_time');
-	finalClickCount.innerText = "Total moves: " ; // TODO implement clickCounter;
-	finalGameTime.innerText = "Time " + document.querySelector('.paragraph_timer'); // TODO set time correct
+	//finalClickCount.innerText = 'Moves: ' + clickCounter; // couldn't get this working
+	finalGameTime.innerText = "Time " + document.querySelector('.paragraph_timer').innerText; 
+
+	playAgainButton();
 }
 
 
@@ -345,10 +358,7 @@ function initializeEventListeners() {
 	let selectedImages = [];
 	let clickCounter = 0;
 
-// I am trying to push the 2 clicked images into an array, stop further clicking and compare the 2 elements. 
-// If they are are identical proceed with the matchedImages()-function on line 240 and clear the selected ImagesArray for the next round 	
-
-for ( let i = 0; i < imagesTop.length; i++ ) {
+	for ( let i = 0; i < imagesTop.length; i++ ) {
 		imagesTop[i].addEventListener('click', function (evt) {
 			if (imagesTop[i].className === 'image_top') {
 				imagesTop[i].className = 'selected';
@@ -361,11 +371,14 @@ for ( let i = 0; i < imagesTop.length; i++ ) {
 					clickCounter += 1;
 					updateScore(clickCounter);
 					document.querySelector('.paragraph_moves').innerText = 'Moves: ' + clickCounter;
+					document.querySelector('.final_moves').innerText = 'Moves: ' + clickCounter;
 				}
 				checkGameOver();
 			}
 		});
 	}
+
+	initializeRestartButton();
 }
 
 startGameAdvanced();

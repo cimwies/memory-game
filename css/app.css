@@ -249,7 +249,7 @@ img.incorrect  {
   text-align: center;
   -webkit-transform: translate(-50%, -50%);
           transform: translate(-50%, -50%);
-  transition: 0.2s all ease-in;
+  transition: 0.3s all ease-in;
 }
 
 .winner_message.active {
@@ -262,6 +262,16 @@ img.incorrect  {
 .winner-message .container {
     position: relative;
     z-index: 100;
+}
+
+.winner_message .winner_title {
+    font-size: 1.6rem;
+}
+
+.winner_message .line{
+    margin: 1rem auto;
+    width: 80%;
+    border: 1px solid #b3b3b3;
 }
 
 .winner_message .winning_stars {
@@ -285,9 +295,12 @@ img.incorrect  {
     text-align: center;
     white-space: nowrap;
     vertical-align: middle;
+    cursor: pointer;
     background-color: #fbca39;
     border: 1px solid #fbca39;
+    margin-top: 1rem;
     padding: .375rem .75rem;
+    font-family: 'Cormorant SC', serif;
     font-size: 1rem;
     line-height: 1.5;
     border-radius: .25rem;
