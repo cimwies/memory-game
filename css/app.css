@@ -43,7 +43,7 @@ body {
     align-items: center;
     flex-direction: column;
     width: 100%;
-    max-width: 940px;
+    max-width: 880px;
     margin: 0 auto;
 }
 
@@ -80,18 +80,20 @@ h2 {
 }
 
 .deck li {
+    width: calc(100% / 4);
+    min-width: 80px;
     margin: 0;
     padding: 0;
     cursor: pointer;
     display: flex;
     justify-content: center;
     align-items: center;
-    width: calc(100% / 4);
-    min-width: 80px;
+ 
 }
 
 .deck .card {
     margin: 8px;
+    transition: all 0.5s;
 }
 
 .deck .card_bottom {
@@ -107,29 +109,27 @@ h2 {
     padding: 0;
     border-radius: 8px;
     background: transparent;
+    transition: 0.5s all;
 }
 
 
 img.image_top {
     opacity: 0;
-    transition: 0.5s all;
     z-index: 10;
+    -webkit-transform: rotateY(-180deg);
+    -moz-transform: rotateY(-180deg);
+    -o-transform: rotateY(-180deg);
+    transform: rotateY(-180deg);
 }
 
 img.image_bottom {
     margin-top: -100%;
     box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.5);
     z-index: 1;
-}
-
-img:hover {
-    -webkit-transform: scale(1.02) rotateY(0);
-            transform: scale(1.02) rotateY(0);
-}
-
-img.selected {
-    -webkit-transform: scale(1.02) rotateY(360deg);
-            transform: scale(1.02) rotateY(360deg);
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
 }
 
 img.selected:hover,
@@ -138,25 +138,60 @@ img.incorrect:hover {
     cursor: default;
 }
 
-img.match {
-    /*-webkit-animation: match 1s forwards;
-            animation: match 1s forwards;
-            */
-    background-color: #5aca84;
-}
-
-img.incorrect {
-    /*-webkit-animation: incorrect 1s forwards;
-            animation: incorrect 1s forwards;
-            */
-    background-color: #ff4447;
-}
-
 img.selected,
 img.match,
 img.incorrect  {
     opacity: 1;
     z-index: 10;
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
+}
+
+img.match {
+    -webkit-animation: match 0.5s;
+    animation: match 0.5s;
+}
+
+
+
+/*
+ * Animations
+ */
+
+@-webkit-keyframes match {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+}
+
+@keyframes match {
+    0% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    50% {
+        -webkit-transform: scale(1.1);
+        transform: scale(1.1);
+    }
+
+    100% {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
 }
 
 
@@ -236,27 +271,27 @@ img.incorrect  {
  */
 
 .winner_message {
-  color: #29282d;
-  background-color: #fff;
-  border-radius: 10px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: absolute;
-  padding: 2em;
-  left: 50%;
-  top: -100%;
-  text-align: center;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  transition: 0.3s all ease-in;
+    color: #29282d;
+    background-color: #fff;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    padding: 2em;
+    left: 50%;
+    top: -100%;
+    text-align: center;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    transition: 0.5s all ease-in;
 }
 
 .winner_message.active {
-  z-index: 100;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  top: 40%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    top: 40%;
+    z-index: 100;
 }
 
 .winner-message .container {
@@ -268,9 +303,9 @@ img.incorrect  {
     font-size: 1.6rem;
 }
 
-.winner_message .line{
+.winner_message .line {
+    width: 80%; 
     margin: 1rem auto;
-    width: 80%;
     border: 1px solid #b3b3b3;
 }
 
