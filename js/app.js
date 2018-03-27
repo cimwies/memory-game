@@ -1,4 +1,7 @@
-// Available Cards for level A = Beginner and level B = Advanced
+/*
+*	@description - 2 Objects, One for the Beginner Level and One for the Advanced Level
+*	
+*/
 
  const imageBeginnerList = [
 	{	card: 1,
@@ -136,7 +139,7 @@ function restartGameAdvanced() {
 *	
 */
 
-// not a true randomizing function but seems to be OK for a Matching Game 
+// not a good randomizing function but seemed to be OK for a Matching Game 
 function randomize(a, b) {
     return Math.random() - 0.5;
 }
@@ -145,7 +148,7 @@ function randomize(a, b) {
 // Adding the images to the HTML page and initialize eventListeners for the game	
 function addImagestoHTML() {
 	removeAllImages();
-	removeAllImagesAdvanced()
+	removeAllImagesAdvanced();
 	imageBeginnerList.sort(randomize);
 	for (let i = 0; i < imageBeginnerList.length; i++ ) {
 		imagesTop[i].setAttribute('src', imageBeginnerList[i].img );
@@ -164,7 +167,7 @@ function removeAllImages() {
 // Advanced Version - Adding the Cards to the HTML page
 function addImagestoHTMLAdvanced() {
 	removeAllImages();
-	removeAllImagesAdvanced()
+	removeAllImagesAdvanced();
 	imageAdvancedList.sort(randomize);
 	for (let i = 0; i < imageAdvancedList.length; i++ ) {
 		imagesTop[i].setAttribute('src', imageAdvancedList[i].img );
@@ -190,7 +193,6 @@ function removeAllImagesAdvanced() {
 function startGameTime() {
 	const gameTime = document.querySelector('.paragraph_timer');
 	const timeStamp = Date.now();
-
 	clearInterval(gameTimeInterval);
 	gameTimeInterval = setInterval(function () {
 		let deltaTime = Math.floor((Date.now() - timeStamp) / 1000);
@@ -234,16 +236,13 @@ function playAgainButton() {
 // Special Thanks to the #hard_coder team giving me the tip to use "bool" :-)
 function matchedImages(bool) {
 	const selectedImages = document.querySelectorAll('.selected');
-
 	let tempClass = 'match';
 	if (!bool) {
 		tempClass = 'incorrect';
 	}
-
 	selectedImages.forEach(function (element) {
   		return element.className = tempClass;
 	});
-
 	flipIncorrectImages();
 }
 
@@ -265,7 +264,7 @@ function flipIncorrectImages() {
 
 function resetScore() {
 	removeAllImages();
-	removeAllImagesAdvanced()
+	removeAllImagesAdvanced();
 	const stars = document.querySelectorAll('.fa-star');
 	for ( let i = 0; i < 3; i++) {
 		stars[i].style.color = '#fbca39';
@@ -313,7 +312,7 @@ function updateScore(clickCounter) {
 // if all cards are "matched cards" the game is over
 function checkGameOver() {
 	const allImages = document.querySelectorAll('.card_top img').length;
-	const matchImages = document.querySelectorAll('.match').length; //|| 0;
+	const matchImages = document.querySelectorAll('.match').length;
 	if ( matchImages === allImages ) {
 		displayWinningMessage();
 	}
@@ -342,14 +341,11 @@ function winningMessage() {
 function initializeEventListeners() {
 	const imagesTop =  document.querySelectorAll('.image_top');
 	let selectedImages = [];
-
 	for ( let i = 0; i < imagesTop.length; i++ ) {
 		imagesTop[i].addEventListener('click', function (evt) {
 			if (imagesTop[i].className === 'image_top') {
 				imagesTop[i].className = 'selected';
-				selectedImages.push(imagesTop[i]);
-
-				
+				selectedImages.push(imagesTop[i]);			
 				if (selectedImages.length === 2) {
 					selectedImages[0].src === selectedImages[1].src  ? matchedImages(true) : matchedImages(false);
 					selectedImages = [];

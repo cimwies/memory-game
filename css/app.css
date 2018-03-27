@@ -185,6 +185,7 @@ img.match {
 
 .score-panel {
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     width: 100%;
     padding: 0 2rem;
@@ -196,8 +197,10 @@ img.match {
     flex-direction: row;
     flex-wrap: nowrap;
     justify-content: center;
+    min-width: 90px;
     margin: 0;
     padding: 0;
+
 }
 
 .score-panel .stars li {
@@ -213,6 +216,7 @@ img.match {
     display: flex;
     flex-grow: 1;
     justify-content: center;
+    min-width: 90px;
 }
 
 .score-panel .moves .paragraph_moves {
@@ -223,10 +227,10 @@ img.match {
     display: flex;
     flex-grow: 1;
     justify-content: center;
+    min-width: 90px;
 }
 
 .score-panel .timer .paragraph_timer {
-    min-width: 62px;
     align-items: center;
 }
 
@@ -239,13 +243,14 @@ img.match {
     background: transparent;
     font-family: 'Cormorant SC', serif;
     font-size: 1rem;
+    min-width: 100px;
     border: none;
     outline: none;
 }
 
-.score-panel #restart:active {
-    border-color: none;
-    outline: none;
+.score-panel #restart:hover,
+.score-panel #advanced:hover {
+    color: #fbca39;
 }
 
 
@@ -267,7 +272,7 @@ img.match {
     text-align: center;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    transition: 0.3s all ease-in;
+    transition: 0.5s all ease-in;
 }
 
 .winner_message.active {
@@ -326,8 +331,8 @@ img.match {
 }
 
 .play_again:hover {
-    background-color: #E1B533;
-    border-color: #E1B533;
+    background-color: #e1b533;
+    border-color: #e1b533;
 }
 
 
@@ -341,7 +346,7 @@ footer {
 
 footer p,
 footer a {
-    color: #676262;
+    color: #746e6e;
     font-size: 0.9rem;
     text-align: center;
 }
