@@ -1,7 +1,7 @@
 # Memory Game Project
 
 Udacity FEND Nanodegree Program - Project3 Memory Game.
-A live version can be seen here: https://cimwies.github.io/memory-game/ - automatic!
+A live version can be seen here: https://cimwies.github.io/memory-game
 
 ## Table of Contents
 
@@ -26,10 +26,10 @@ The structure of the JS-file consists of many small "code fragments" that way a 
 
 ### Sources
 
-* Icon Fonts by https://fontawesome.com/ -automatic!
-* Google Font Cormorant by https://fonts.google.com/specimen/Cormorant+SC -automatic
-* Game of throne icons by [Fuzzysocks102][https://fuzzysocks102.deviantart.com/art/Game-of-Thrones-House-Sigils-eps-vector-file-458338885] 
-* Game of Throne Images for non-commercial, educational purpose only by [Facebook][https://www.facebook.com/pg/GameOfThrones/photos] 
+* Icon Fonts by https://fontawesome.com
+* Google Font Cormorant by https://fonts.google.com/specimen/Cormorant+SC
+* Game of throne icons by [Fuzzysocks102](https://fuzzysocks102.deviantart.com/art/Game-of-Thrones-House-Sigils-eps-vector-file-458338885) 
+* Game of Throne Images for non-commercial, educational purpose only by [Facebook](https://www.facebook.com/pg/GameOfThrones/photos) 
 
 ### Open issues
 
