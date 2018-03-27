@@ -86,7 +86,6 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
- 
 }
 
 .deck .card {
@@ -114,8 +113,7 @@ h2 {
     -moz-transform: rotateY(0deg);
     -o-transform: rotateY(0deg);
     transform: rotateY(0deg);
-    opacity: 0;
-    z-index: 10;
+    opacity: 0; 
 }
 
 img.selected:hover,
@@ -125,18 +123,17 @@ img.incorrect:hover {
 }
 
 img.selected,
-img.match,
 img.incorrect {
     -webkit-transform: rotateY(180deg);
     -moz-transform: rotateY(180deg);
     -o-transform: rotateY(180deg);
     transform: rotateY(180deg);
-    opacity: 1;
-    z-index: 10;
+    opacity: 1;    
 }
 
 img.match {
     -webkit-animation: match 0.5s;
+    opacity: 1; 
 }
 
 
