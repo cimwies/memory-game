@@ -141,7 +141,7 @@ function restartGameAdvanced() {
 
 // not a good randomizing function but seemed to be OK for a Matching Game 
 function randomize(a, b) {
-    return Math.random() - 0.5;
+	return Math.random() - 0.5;
 }
 
 
