@@ -18,8 +18,7 @@ body {
 }
 
 h1,
-h2
- {
+h2 {
     margin: 0;
 }
 
@@ -31,9 +30,9 @@ p {
 /* Basic Elements */
 
 body {
-    background: #29282d url(../img/title.jpg) no-repeat center center fixed/*#bcc9d5*/;
+    background: #29282d url(../img/title.jpg) no-repeat center center fixed;
     background-size: cover;
-    font: 18px/ 1.33 'Cormorant SC', serif; /*golden rule 18 * 1.618 for line height */
+    font: 18px/ 1.33 'Cormorant SC', serif;
     color: #fff;
 }
 
@@ -64,7 +63,6 @@ h2 {
 }
 
 
-
 /*
  * Styles for the deck of cards
  */
@@ -93,11 +91,13 @@ h2 {
 
 .deck .card {
     margin: 8px;
-    transition: all 0.5s;
 }
 
-.deck .card_bottom {
-    background-image: url(../img/match.svg) no-repeat center center;
+.deck .card_top {
+    border-radius: 8px;
+    background: url(../img/logo.svg) no-repeat center center;
+    background-size: cover;
+    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.5);
 }
 
 .deck img {
@@ -110,26 +110,12 @@ h2 {
     border-radius: 8px;
     background: transparent;
     transition: 0.5s all;
-}
-
-
-img.image_top {
+    -webkit-transform: rotateY(0deg);
+    -moz-transform: rotateY(0deg);
+    -o-transform: rotateY(0deg);
+    transform: rotateY(0deg);
     opacity: 0;
     z-index: 10;
-    -webkit-transform: rotateY(-180deg);
-    -moz-transform: rotateY(-180deg);
-    -o-transform: rotateY(-180deg);
-    transform: rotateY(-180deg);
-}
-
-img.image_bottom {
-    margin-top: -100%;
-    box-shadow: 1px 1px 5px 0 rgba(0, 0, 0, 0.5);
-    z-index: 1;
-    -webkit-transform: rotateY(180deg);
-    -moz-transform: rotateY(180deg);
-    -o-transform: rotateY(180deg);
-    transform: rotateY(180deg);
 }
 
 img.selected:hover,
@@ -140,20 +126,18 @@ img.incorrect:hover {
 
 img.selected,
 img.match,
-img.incorrect  {
+img.incorrect {
+    -webkit-transform: rotateY(180deg);
+    -moz-transform: rotateY(180deg);
+    -o-transform: rotateY(180deg);
+    transform: rotateY(180deg);
     opacity: 1;
     z-index: 10;
-    -webkit-transform: rotateY(0deg);
-    -moz-transform: rotateY(0deg);
-    -o-transform: rotateY(0deg);
-    transform: rotateY(0deg);
 }
 
 img.match {
     -webkit-animation: match 0.5s;
-    animation: match 0.5s;
 }
-
 
 
 /*
@@ -242,7 +226,7 @@ img.match {
 }
 
 .score-panel .timer .paragraph_timer {
-    width: 62px;
+    min-width: 62px;
     align-items: center;
 }
 
@@ -265,7 +249,6 @@ img.match {
 }
 
 
-
 /*
  * Styles Winner Message
  */
@@ -284,7 +267,7 @@ img.match {
     text-align: center;
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
-    transition: 0.5s all ease-in;
+    transition: 0.3s all ease-in;
 }
 
 .winner_message.active {
@@ -348,7 +331,6 @@ img.match {
 }
 
 
-
 /*
  * Styles Footer
  */
@@ -363,7 +345,6 @@ footer a {
     font-size: 0.9rem;
     text-align: center;
 }
-
 
 
 /*

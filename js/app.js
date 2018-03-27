@@ -110,7 +110,6 @@ let gameTimeInterval;
 
 // Basic Functions
 function startGame() {
-	//resetScore(); should not be required
 	addImagestoHTML();
 	startGameTime();
 	initializeRestartButton();
@@ -118,7 +117,6 @@ function startGame() {
 
 function restartGame() {
 	resetScore();
-	//alert(clickCounter); alwasy shos "0"
 	addImagestoHTML();
 	resetGameTime();
 	initializeRestartButton();
@@ -133,18 +131,18 @@ function restartGameAdvanced() {
 }
 
 
-
 /*
 *	@description - Images: shuffle and put or remove from the HTML page
 *	
 */
 
-// not the best reshuffling but seems to be OK for a Matching Game 
+// not a true randomizing function but seems to be OK for a Matching Game 
 function randomize(a, b) {
     return Math.random() - 0.5;
 }
 
-// Adding the images to the HTML page	
+
+// Adding the images to the HTML page and initialize eventListeners for the game	
 function addImagestoHTML() {
 	removeAllImages();
 	removeAllImagesAdvanced()
@@ -183,10 +181,9 @@ function removeAllImagesAdvanced() {
 }
 
 
-
 /*
 *	@description - Setting timer functions using Date.now()
-*	@description -  Converting the milliseconds in an interval printing seconds and minutes
+*	@description -  Converting the milliseconds into an interval printing seconds and minutes
 *	
 */
 
@@ -213,9 +210,8 @@ function resetGameTime() {
 }
 
 
-
 /*
-*	@description - Game Controls
+*	@description - Game Controls, Buttons
 *	
 */
 
@@ -235,7 +231,7 @@ function playAgainButton() {
 }
 
 
-// Thank you #hard_coder team with the tip to use "bool" :-)
+// Special Thanks to the #hard_coder team giving me the tip to use "bool" :-)
 function matchedImages(bool) {
 	const selectedImages = document.querySelectorAll('.selected');
 
@@ -251,7 +247,7 @@ function matchedImages(bool) {
 	flipIncorrectImages();
 }
 
-// 1 sec in order to give the user a chance to memorize the cards
+// 1 sec waiting, in order to give the user a chance to memorize the cards
 function flipIncorrectImages() {
 	const selectedIncorrect = document.querySelectorAll('.incorrect');
 	setTimeout(function () {
@@ -260,7 +256,6 @@ function flipIncorrectImages() {
  		});
 	}, 1000);
 }
-
 
 
 /*
@@ -289,7 +284,7 @@ function updateScore(clickCounter) {
 	const stars = document.querySelectorAll('.stars .fa-star');
 	const winningStars = document.querySelectorAll('.winning_stars .fa-star');
 	switch(clickCounter) {
-    	case 18:
+    	case 10:
 	       	stars[0].style.color = '#fbca39';
 	      	stars[1].style.color = '#fbca39';
 	      	stars[2].style.color = '#fff';
@@ -297,7 +292,7 @@ function updateScore(clickCounter) {
 	      	winningStars[1].style.color = '#fbca39';
 	      	winningStars[2].style.color = '#ffff';
     	break;
-      	case 24:
+      	case 17:
         	stars[0].style.color = '#fbca39';
 	      	stars[1].style.color = '#fff';
 	      	stars[2].style.color = '#fff';
@@ -305,7 +300,7 @@ function updateScore(clickCounter) {
 	      	winningStars[1].style.color = '#fff';
 	      	winningStars[2].style.color = '#fff';
        	break;
-      	case 36:
+      	case 24:
 	        stars[0].style.color = '#fff';
 	      	stars[1].style.color = '#fff';
 	      	stars[2].style.color = '#fff';
@@ -315,7 +310,7 @@ function updateScore(clickCounter) {
    	}
 }
 
-// if all cards are matched cards the game is over
+// if all cards are "matched cards" the game is over
 function checkGameOver() {
 	const allImages = document.querySelectorAll('.card_top img').length;
 	const matchImages = document.querySelectorAll('.match').length; //|| 0;
@@ -337,7 +332,6 @@ function winningMessage() {
 	finalGameTime.innerText = "Time " + document.querySelector('.paragraph_timer').innerText; 
 	playAgainButton();
 }
-
 
 
 /*
