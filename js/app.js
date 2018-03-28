@@ -286,26 +286,32 @@ function updateScore(clickCounter) {
     	case 10:
 	       	stars[0].style.color = '#fbca39';
 	      	stars[1].style.color = '#fbca39';
-	      	stars[2].style.color = '#fff';
+	      	stars[2].style.color = '#7a6427';
 	      	winningStars[0].style.color = '#fbca39';
 	      	winningStars[1].style.color = '#fbca39';
-	      	winningStars[2].style.color = '#ffff';
+	      	winningStars[2].style.color = '#fde9ac';
     	break;
-      	case 17:
+      	case 20:
         	stars[0].style.color = '#fbca39';
-	      	stars[1].style.color = '#fff';
-	      	stars[2].style.color = '#fff';
+	      	stars[1].style.color = '#7a6427';
+	      	stars[2].style.color = '#7a6427';
 	      	winningStars[0].style.color = '#fbca39';
-	      	winningStars[1].style.color = '#fff';
-	      	winningStars[2].style.color = '#fff';
-       	break;
-      	case 24:
-	        stars[0].style.color = '#fff';
-	      	stars[1].style.color = '#fff';
-	      	stars[2].style.color = '#fff';
-	      	winningStars[0].style.color = '#fff';
-	      	winningStars[1].style.color = '#fff';
-	      	winningStars[2].style.color = '#fff';
+	      	winningStars[1].style.color = '#fde9ac';
+	      	winningStars[2].style.color = '#fde9ac';
+
+// no scoring with "0" stars
+/*       	
+*       	break;
+*      	case 24:
+*	        stars[0].style.color = '#fff';
+*	      	stars[1].style.color = '#fff';
+*	      	stars[2].style.color = '#fff';
+*	      	winningStars[0].style.color = '#fff';
+*	      	winningStars[1].style.color = '#fff';
+*			winningStars[2].style.color = '#fff';
+*
+*/
+	      	
    	}
 }
 
