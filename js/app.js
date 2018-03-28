@@ -298,20 +298,6 @@ function updateScore(clickCounter) {
 	      	winningStars[0].style.color = '#fbca39';
 	      	winningStars[1].style.color = '#fde9ac';
 	      	winningStars[2].style.color = '#fde9ac';
-
-// no scoring with "0" stars
-/*       	
-*       	break;
-*      	case 24:
-*	        stars[0].style.color = '#fff';
-*	      	stars[1].style.color = '#fff';
-*	      	stars[2].style.color = '#fff';
-*	      	winningStars[0].style.color = '#fff';
-*	      	winningStars[1].style.color = '#fff';
-*			winningStars[2].style.color = '#fff';
-*
-*/
-	      	
    	}
 }
 
