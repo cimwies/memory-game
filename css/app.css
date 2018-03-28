@@ -78,7 +78,7 @@ h2 {
 }
 
 .deck li {
-    width: calc(100vw/4 - 10px);
+    width: calc(100%/4);
     margin: 0;
     padding: 0;
     cursor: pointer;
@@ -373,7 +373,7 @@ footer a {
     .score-panel .stars,
     .score-panel .moves,
     .score-panel .timer {
-        min-width: calc(100vw/3 - 40px);
+        min-width: calc(100%/3);
     }
 
     .score-panel #restart,
