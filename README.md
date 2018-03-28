@@ -20,6 +20,12 @@ The Game is over when all matched cards are "discovered". A GameStatistics will 
 * Option "Beginner" is a visually easier version.
 * Option "Advanced" is a visually more difficult version.
 
+Possible Scores are:
+
+* 3 Stars - excellent
+* 2 Stars - great
+* 1 Star - good
+
 ### Technical Information
 
 The Game consists of an HTML-, CSS-, and JS-file and diverse images.
