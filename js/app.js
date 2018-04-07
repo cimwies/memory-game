@@ -253,7 +253,7 @@ function flipIncorrectImages() {
   		return selectedIncorrect.forEach(function (element) {
     		return element.className = 'image_top';
  		});
-	}, 1000);
+	}, 12000);
 }
 
 
